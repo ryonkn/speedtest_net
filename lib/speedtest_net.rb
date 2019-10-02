@@ -1,4 +1,6 @@
-require "speedtest_net/version"
+# frozen_string_literal: true
+
+require 'speedtest_net/version'
 
 module SpeedtestNet
   class Error < StandardError; end
