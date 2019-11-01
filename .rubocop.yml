@@ -3,3 +3,6 @@ require: rubocop-rspec
 AllCops:
   Exclude:
     - 'speedtest_net.gemspec'
+
+Style/Documentation:
+  Enabled: false
