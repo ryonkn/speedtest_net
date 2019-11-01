@@ -1,5 +1,7 @@
 # SpeedtestNet
 
+[![Gem Version](https://badge.fury.io/rb/speedtest_net.svg)](https://badge.fury.io/rb/speedtest_net)
+
 A Ruby library for testing internet bandwidth using speedtest.net
 
 ## Installation
