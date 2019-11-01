@@ -1,8 +1,6 @@
 # SpeedtestNet
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/speedtest_net`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Ruby library for testing internet bandwidth using speedtest.net
 
 ## Installation
 
@@ -22,17 +20,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'speedtest_net'
+```
 
-## Development
+### Run speedtest
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+result = SpeedtestNet.run                    # SpeedtestNet::Result instance
+result.server                                # server environment in speedtest
+result.client                                # client environment in speedtest
+result.latency                               # latency in speedtest
+result.download                              # download bit/second in speedtest
+result.upload                                # upload bit/second in speedtest
+result.pretty_latency                        # pretty format for latency in speedtest
+result.pretty_download                       # pretty format for download bit/second in speedtest
+result.pretty_upload                         # pretty format for upload bit/second in speedtest
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ryonkn/speedtest_net. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+1. Fork it ( https://github.com/ryonkn/speedtest_net/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## License
 
