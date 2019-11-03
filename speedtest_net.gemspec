@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ryo Nakano']
   spec.email         = ['ryo@ryonkn.com']
 
-  spec.summary       = 'Ruby Library for testing internet bandwidth using speedtest.net'
-  spec.description   = 'Ruby Library for testing internet bandwidth using speedtest.net'
+  spec.summary       = 'Library for testing internet bandwidth using speedtest.net'
+  spec.description   = 'Library for testing internet bandwidth using speedtest.net'
   spec.homepage      = 'https://github.com/ryonkn/speedtest_net'
   spec.license       = 'MIT'
 
