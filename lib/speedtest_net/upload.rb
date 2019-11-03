@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'curb'
+require 'securerandom'
 
 module SpeedtestNet
   class Upload

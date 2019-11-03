@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'typhoeus'
+require 'securerandom'
 
 module SpeedtestNet
   class Latency
