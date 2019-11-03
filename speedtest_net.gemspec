@@ -36,6 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec'
 
   spec.add_dependency 'curb', '~> 0.9'
-  spec.add_dependency 'geo_point', '~> 0.2'
   spec.add_dependency 'typhoeus'
 end
