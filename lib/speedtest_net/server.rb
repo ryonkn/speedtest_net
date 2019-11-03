@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-require 'geo_point'
 require 'rexml/document'
 require 'speedtest_net/config'
 require 'speedtest_net/latency'
 require 'speedtest_net/error'
+require 'speedtest_net/geo'
 
 module SpeedtestNet
   class Server
-    attr_reader :id, :url, :geo_point, :distance, :name, :country, :cc,
+    attr_reader :id, :url, :geo, :distance, :name, :country, :cc,
                 :sponsor, :host
     attr_accessor :latency
 
-    def initialize(id, url, geo_point, distance, server)
+    def initialize(id, url, geo, distance, server)
       @id = id
       @url = url
-      @geo_point = geo_point
+      @geo = geo
       @distance = distance
       @name = server['name']
       @country = server['country']
@@ -52,10 +52,10 @@ module SpeedtestNet
         config = SpeedtestNet::Config.fetch
         url = server['url2'] || server['url']
 
-        geo_point = GeoPoint.new(server['lat'].to_f, server['lon'].to_f)
-        distance = geo_point.distance_to(config.client[:geo_point])
+        geo = SpeedtestNet::Geo.new(server['lat'].to_f, server['lon'].to_f)
+        distance = geo.distance(config.client[:geo])
 
-        new(server['id'].to_i, url, geo_point, distance, server)
+        new(server['id'].to_i, url, geo, distance, server)
       end
 
       def fetch_servers
