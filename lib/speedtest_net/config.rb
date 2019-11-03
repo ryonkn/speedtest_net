@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'geo_point'
 require 'rexml/document'
 require 'speedtest_net/error'
+require 'speedtest_net/geo'
 
 module SpeedtestNet
   class Config
@@ -60,7 +60,7 @@ module SpeedtestNet
         {
           ip: elements['ip'],
           isp: elements['isp'],
-          geo_point: GeoPoint.new(elements['lat'].to_f, elements['lon'].to_f)
+          geo: SpeedtestNet::Geo.new(elements['lat'].to_f, elements['lon'].to_f)
         }
       end
 
