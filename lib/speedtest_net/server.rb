@@ -4,7 +4,7 @@ require 'rexml/document'
 require 'speedtest_net/config'
 require 'speedtest_net/latency'
 require 'speedtest_net/error'
-require 'speedtest_net/geo'
+require 'geo'
 
 module SpeedtestNet
   class Server
@@ -52,7 +52,7 @@ module SpeedtestNet
         config = SpeedtestNet::Config.fetch
         url = server['url2'] || server['url']
 
-        geo = SpeedtestNet::Geo.new(server['lat'].to_f, server['lon'].to_f)
+        geo = Geo.new(server['lat'].to_f, server['lon'].to_f)
         distance = geo.distance(config.client[:geo])
 
         new(server['id'].to_i, url, geo, distance, server)
