@@ -2,7 +2,7 @@
 
 require 'rexml/document'
 require 'speedtest_net/error'
-require 'speedtest_net/geo'
+require 'geo'
 
 module SpeedtestNet
   class Config
@@ -60,7 +60,7 @@ module SpeedtestNet
         {
           ip: elements['ip'],
           isp: elements['isp'],
-          geo: SpeedtestNet::Geo.new(elements['lat'].to_f, elements['lon'].to_f)
+          geo: Geo.new(elements['lat'].to_f, elements['lon'].to_f)
         }
       end
 
