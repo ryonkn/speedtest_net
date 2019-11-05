@@ -42,10 +42,11 @@ module SpeedtestNet
       end
 
       def calculate_results(results)
-        count = results.count
+        sorted_results = results.sort
+        count = sorted_results.count
         faster = count - (count * 0.1).round
         slower = (count * 0.3).round
-        target_results = results[slower...faster]
+        target_results = sorted_results[slower...faster]
         target_results.sum / target_results.count
       end
     end
