@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'speedtest_net/version'
-require 'Speedtest_net/run'
-require 'Speedtest_net/server'
+require 'speedtest_net/run'
+require 'speedtest_net/server'
 
 module SpeedtestNet
   def self.run
