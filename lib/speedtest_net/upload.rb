@@ -2,6 +2,7 @@
 
 require 'curb'
 require 'securerandom'
+require 'speedtest_net/calculate_speed'
 
 module SpeedtestNet
   class Upload
@@ -17,7 +18,7 @@ module SpeedtestNet
           urls = create_urls(server, concurrent_number)
           multi_uploader(urls, size)
         end
-        calculate_results(results)
+        SpeedtestNet::CalculateSpeed.call(results)
       end
 
       private
