@@ -2,6 +2,7 @@
 
 require 'curb'
 require 'securerandom'
+require 'speedtest_net/calculate_speed'
 
 module SpeedtestNet
   class Download
@@ -18,7 +19,7 @@ module SpeedtestNet
           urls = create_urls(server, file, concurrent_number)
           multi_downloader(urls)
         end
-        calculate_results(results)
+        SpeedtestNet::CalculateSpeed.call(results)
       end
 
       private
@@ -41,15 +42,6 @@ module SpeedtestNet
         end
         multi.perform
         responses.map(&:download_speed).sum * 8
-      end
-
-      def calculate_results(results)
-        sorted_results = results.sort
-        count = sorted_results.count
-        faster = count - (count * 0.1).round
-        slower = (count * 0.3).round
-        target_results = sorted_results[slower...faster]
-        target_results.sum / target_results.count
       end
     end
   end
