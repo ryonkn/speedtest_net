@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SpeedtestNet::Config do
+RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
   before { described_class.instance_variable_set :@instance_cache, nil }
 
   let(:config) { described_class.fetch }
@@ -13,13 +13,15 @@ RSpec.describe SpeedtestNet::Config do
     end
 
     context 'when access error was' do
-      it 'raise error' do
+      before do
         curl_mock = instance_double(Curl::Easy)
         allow(Curl::Easy).to receive(:new).and_return(curl_mock)
         allow(curl_mock).to receive_messages('follow_location=': true,
                                              perform: true,
                                              response_code: 500)
+      end
 
+      it 'raise error' do
         expect { described_class.fetch }.to raise_error(
           SpeedtestNet::HTTPDownloadError
         )
@@ -43,7 +45,7 @@ RSpec.describe SpeedtestNet::Config do
       expect(config.client).to include(ip: '192.0.2.1', isp: 'EXAMPLE ISP')
     end
 
-    context '[:geo]' do
+    context 'when access :geo' do
       it 'was Geo instance', vcr: { cassette_name: 'config' } do
         expect(config.client[:geo]).to be_kind_of(Geo)
       end
