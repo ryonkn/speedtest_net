@@ -38,6 +38,10 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         architecture: 'x64'
+    - name: Run apt-get
+      run: |
+        sudo apt-get update
+        sudo apt-get install libcurl4-openssl-dev
     - name: Bundle install
       run: |
         gem install bundler
