@@ -15,7 +15,7 @@ module SpeedtestNet
 
         # The remaining result are averaged together to determine
         # the final result
-        target_results.sum / target_results.count
+        target_results.sum.to_f / target_results.count
       end
     end
   end
