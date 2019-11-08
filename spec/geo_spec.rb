@@ -18,7 +18,7 @@ RSpec.describe Geo do
 
   describe '#distance' do
     it 'was valid' do
-      expect(point1.distance(point2)).to eq(9_558_874.254355017)
+      expect(point1.distance(point2).round).to eq(9_558_874)
     end
   end
 end
