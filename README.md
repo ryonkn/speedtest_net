@@ -1,6 +1,7 @@
 # SpeedtestNet
 
 [![Gem Version](https://badge.fury.io/rb/speedtest_net.svg)](https://badge.fury.io/rb/speedtest_net)
+[![Actions Status](https://github.com/ryonkn/speedtest_net/workflows/GitHub%20Actions/badge.svg)](https://github.com/ryonkn/speedtest_net/actions)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/18f112dae19a48938bdf2b225d3a76bb)](https://www.codacy.com/manual/ryonkn/speedtest_net?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ryonkn/speedtest_net&amp;utm_campaign=Badge_Grade)
 
 A Ruby library for testing internet bandwidth using speedtest.net
