@@ -1,7 +1,26 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter
+  ]
+)
+
+SimpleCov.start do
+  add_filter '/spec/'
+end
+
 require 'bundler/setup'
 require 'speedtest_net'
+require 'vcr'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
