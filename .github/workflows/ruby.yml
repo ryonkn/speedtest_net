@@ -23,7 +23,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Run rubocop
       run: |
-        gem install rubocop
+        gem install rubocop rubocop-rspec
         rubocop
 
   rspec:
