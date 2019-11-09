@@ -51,4 +51,45 @@ RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
       end
     end
   end
+
+  describe '#server' do
+    it 'was valid', vcr: { cassette_name: 'config' } do
+      expect(config.server).to include(threadcount: 4, forcepingid: '',
+                                       preferredserverid: '')
+    end
+
+    context 'when access :ignoreids' do
+      it 'was valid', vcr: { cassette_name: 'config' } do
+        expect(config.server[:ignoreids]).to include(949, 1525, 1716)
+      end
+    end
+
+    context 'when access :notonmap' do
+      it 'was valid', vcr: { cassette_name: 'config' } do
+        expect(config.server[:notonmap]).to include(234, 282, 721)
+      end
+    end
+  end
+
+  describe '#download' do
+    it 'was valid', vcr: { cassette_name: 'config' } do
+      expect(config.download).to include(testlength: 10, initialtest: '250K',
+                                         mintestsize: '250K', threadsperurl: 4)
+    end
+  end
+
+  describe '#upload' do
+    it 'was valid', vcr: { cassette_name: 'config' } do
+      expect(config.upload).to include(testlength: 10, initialtest: 0,
+                                       threads: 2, maxchunkcount: 50,
+                                       maxchunksize: '512K', threadsperurl: 4)
+    end
+  end
+
+  describe '#latency' do
+    it 'was valid', vcr: { cassette_name: 'config' } do
+      expect(config.latency).to include(testlength: 0, waittime: 50,
+                                        timeout: 20)
+    end
+  end
 end

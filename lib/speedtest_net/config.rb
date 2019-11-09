@@ -86,9 +86,9 @@ module SpeedtestNet
       def upload_config(elements)
         {
           testlength: elements['testlength'].to_i,
-          initialtest: elements['initialtest'],
+          initialtest: elements['initialtest'].to_i,
           mintestsize: elements['mintestsize'],
-          threads: elements['threads'],
+          threads: elements['threads'].to_i,
           maxchunksize: elements['maxchunksize'],
           maxchunkcount: elements['maxchunkcount'].to_i,
           threadsperurl: elements['threadsperurl'].to_i
