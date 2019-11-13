@@ -35,14 +35,16 @@ module SpeedtestNet
         servers = xml_servers.map do |server|
           create_instance(server)
         end
-        servers.sort { |a, b| a.distance <=> b.distance }
+        servers.sort_by { |s| [s.distance, s.id] }
       end
 
       def best_server
         servers = list
         closest_servers = servers.first(10)
         closest_servers.each(&:measure_latency)
-        sorted_servers = closest_servers.sort { |a, b| a.latency <=> b.latency }
+        sorted_servers = closest_servers.sort_by do |s|
+          [s.latency, s.distance, s.id]
+        end
         sorted_servers.first
       end
 
