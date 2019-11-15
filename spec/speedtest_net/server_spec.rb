@@ -66,9 +66,7 @@ RSpec.describe SpeedtestNet::Server do # rubocop:disable Metrics/BlockLength
     end
 
     it 'was valid' do
-      server = described_class.new(1, 'http://example.com', nil, nil,
-                                   'name': nil, 'country': nil, 'cc': nil,
-                                   'sponsor': nil, 'host': nil)
+      server = build(:server)
       server.measure_latency
       expect(server.latency).to eq(5.0)
     end
