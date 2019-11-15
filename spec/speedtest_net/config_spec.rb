@@ -3,12 +3,12 @@
 RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
   before { described_class.instance_variable_set :@instance_cache, nil }
 
-  let(:config) { described_class.fetch }
+  let(:config) { build(:config) }
 
   describe '.fetch' do
     context 'when access was' do
       it 'success', vcr: { cassette_name: 'config' } do
-        expect(config).to be_instance_of(described_class)
+        expect(described_class.fetch).to be_instance_of(described_class)
       end
     end
 
@@ -41,53 +41,53 @@ RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
   end
 
   describe '#client' do
-    it 'was valid', vcr: { cassette_name: 'config' } do
-      expect(config.client).to include(ip: '192.0.2.1', isp: 'EXAMPLE ISP')
+    it 'was valid' do
+      expect(config.client).to include(ip: '127.0.0.1', isp: 'example isp')
     end
 
     context 'when access :geo' do
-      it 'was Geo instance', vcr: { cassette_name: 'config' } do
+      it 'was Geo instance' do
         expect(config.client[:geo]).to be_kind_of(Geo)
       end
     end
   end
 
   describe '#server' do
-    it 'was valid', vcr: { cassette_name: 'config' } do
-      expect(config.server).to include(threadcount: 4, forcepingid: '',
+    it 'was valid' do
+      expect(config.server).to include(threadcount: 1, forcepingid: '',
                                        preferredserverid: '')
     end
 
     context 'when access :ignoreids' do
       it 'was valid', vcr: { cassette_name: 'config' } do
-        expect(config.server[:ignoreids]).to include(949, 1525, 1716)
+        expect(config.server[:ignoreids]).to include(1, 2, 3)
       end
     end
 
     context 'when access :notonmap' do
-      it 'was valid', vcr: { cassette_name: 'config' } do
-        expect(config.server[:notonmap]).to include(234, 282, 721)
+      it 'was valid' do
+        expect(config.server[:notonmap]).to include(4, 5, 6)
       end
     end
   end
 
   describe '#download' do
-    it 'was valid', vcr: { cassette_name: 'config' } do
-      expect(config.download).to include(testlength: 10, initialtest: '250K',
-                                         mintestsize: '250K', threadsperurl: 4)
+    it 'was valid' do
+      expect(config.download).to include(testlength: 1, initialtest: '250K',
+                                         mintestsize: '250K', threadsperurl: 1)
     end
   end
 
   describe '#upload' do
-    it 'was valid', vcr: { cassette_name: 'config' } do
-      expect(config.upload).to include(testlength: 10, initialtest: 0,
-                                       threads: 2, maxchunkcount: 50,
-                                       maxchunksize: '512K', threadsperurl: 4)
+    it 'was valid' do
+      expect(config.upload).to include(testlength: 1, initialtest: 1,
+                                       threads: 1, maxchunkcount: 1,
+                                       maxchunksize: '512K', threadsperurl: 1)
     end
   end
 
   describe '#latency' do
-    it 'was valid', vcr: { cassette_name: 'config' } do
+    it 'was valid' do
       expect(config.latency).to include(testlength: 0, waittime: 50,
                                         timeout: 20)
     end
