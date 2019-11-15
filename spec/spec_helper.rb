@@ -17,6 +17,7 @@ end
 require 'bundler/setup'
 require 'speedtest_net'
 require 'vcr'
+require 'factory_bot'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr'
@@ -35,5 +36,10 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  config.include FactoryBot::Syntax::Methods
+  config.before(:suite) do
+    FactoryBot.find_definitions
   end
 end
