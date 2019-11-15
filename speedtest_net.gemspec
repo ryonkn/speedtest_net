@@ -29,6 +29,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'codacy-coverage'
+  spec.add_development_dependency 'factory_bot'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
@@ -37,7 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'codacy-coverage'
 
   spec.add_dependency 'curb', '~> 0.9'
   spec.add_dependency 'typhoeus'
