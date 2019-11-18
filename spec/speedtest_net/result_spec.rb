@@ -50,4 +50,16 @@ RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
       expect(result.pretty_latency).to eq('123.450000 millisecond')
     end
   end
+
+  describe '#distance' do
+    it 'was valid' do
+      expect(result.distance).to eq(1234.56789)
+    end
+  end
+
+  describe '#pretty_distance' do
+    it 'was valid' do
+      expect(result.pretty_distance).to eq('1234.568 kilometre')
+    end
+  end
 end

@@ -29,6 +29,14 @@ module SpeedtestNet
       format('%<latency>f millisecond', latency: latency * 1_000)
     end
 
+    def distance
+      @server.distance
+    end
+
+    def pretty_distance
+      format('%<distance>.3f kilometre', distance: distance.round(3))
+    end
+
     private
 
     def pretty_format(speed)
