@@ -59,7 +59,7 @@ RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
 
   describe '#pretty_distance' do
     it 'was valid' do
-      expect(result.pretty_distance).to eq('1234.568 kilometre')
+      expect(result.pretty_distance).to eq('1.235 kilometre')
     end
   end
 end

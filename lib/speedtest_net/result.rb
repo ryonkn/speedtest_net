@@ -34,7 +34,7 @@ module SpeedtestNet
     end
 
     def pretty_distance
-      format('%<distance>.3f kilometre', distance: distance.round(3))
+      format('%<distance>.3f kilometre', distance: (distance / 1_000).round(3))
     end
 
     private
