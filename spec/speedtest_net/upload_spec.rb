@@ -7,6 +7,7 @@ RSpec.describe SpeedtestNet::Upload do
   let(:server) { build(:server) }
   let(:easy_mock) { instance_double(Curl::Easy) }
   let(:fake_speed) { 1.upto(10).map { |i| i / 10.0 } }
+  let(:result_speed) { fake_speed.map { |s| s * 8 } }
 
   before do
     allow(SpeedtestNet::Config).to receive(:fetch).and_return(config)
@@ -16,7 +17,7 @@ RSpec.describe SpeedtestNet::Upload do
 
   describe '.measure' do
     it 'was valid' do
-      expect(measure).to eq(5.2)
+      expect(measure).to eq(result_speed)
     end
   end
 end

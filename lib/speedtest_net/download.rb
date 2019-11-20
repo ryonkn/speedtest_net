@@ -2,7 +2,6 @@
 
 require 'curb'
 require 'securerandom'
-require 'speedtest_net/calculate_speed'
 
 module SpeedtestNet
   class Download
@@ -19,7 +18,7 @@ module SpeedtestNet
           urls = create_urls(server, file, concurrent_number)
           multi_downloader(urls)
         end
-        SpeedtestNet::CalculateSpeed.call(results)
+        results
       end
 
       private

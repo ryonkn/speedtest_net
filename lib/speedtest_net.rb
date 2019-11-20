@@ -10,11 +10,12 @@ module SpeedtestNet
   def self.run
     config = SpeedtestNet::Config.fetch
     server = SpeedtestNet::Server.best_server
-    download = SpeedtestNet::Download.measure(server)
-    upload = SpeedtestNet::Upload.measure(server)
+    download_results = SpeedtestNet::Download.measure(server)
+    upload_results = SpeedtestNet::Upload.measure(server)
 
     SpeedtestNet::Config.clear_cache
-    SpeedtestNet::Result.new(config.client, server, download, upload)
+    SpeedtestNet::Result.new(config.client, server, download_results,
+                             upload_results)
   end
 
   def self.list_server
