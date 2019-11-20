@@ -2,6 +2,7 @@
 
 require 'curb'
 require 'securerandom'
+require 'pathname'
 
 module SpeedtestNet
   class Download

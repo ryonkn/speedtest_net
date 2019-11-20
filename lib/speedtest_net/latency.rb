@@ -2,6 +2,7 @@
 
 require 'typhoeus'
 require 'securerandom'
+require 'pathname'
 
 module SpeedtestNet
   class Latency
