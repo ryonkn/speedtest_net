@@ -1,24 +1,34 @@
 # frozen_string_literal: true
 
+require 'speedtest_net/calculate_speed'
+
 module SpeedtestNet
   class Result
     UNITS = %w[bps Kbps Mbps Gbps Tbps].freeze
 
-    attr_reader :server, :client, :download, :upload
+    attr_reader :client, :server, :download_results, :upload_results
 
-    def initialize(client, server, download, upload)
+    def initialize(client, server, download_results, upload_results)
       @client = client
       @server = server
-      @download = download
-      @upload = upload
+      @download_results = download_results
+      @upload_results = upload_results
+    end
+
+    def download
+      SpeedtestNet::CalculateSpeed.call(@download_results)
     end
 
     def pretty_download
-      pretty_format(@download)
+      pretty_format(download)
+    end
+
+    def upload
+      SpeedtestNet::CalculateSpeed.call(@upload_results)
     end
 
     def pretty_upload
-      pretty_format(@upload)
+      pretty_format(upload)
     end
 
     def latency

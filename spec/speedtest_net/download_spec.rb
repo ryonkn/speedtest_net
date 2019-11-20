@@ -8,6 +8,7 @@ RSpec.describe SpeedtestNet::Download do
   let(:multi_mock) { instance_double(Curl::Multi) }
   let(:easy_mock) { instance_double(Curl::Easy) }
   let(:fake_speed) { 1.upto(8).map { |i| i / 10.0 } }
+  let(:result_speed) { fake_speed.map { |s| s * 8 } }
 
   before do
     allow(SpeedtestNet::Config).to receive(:fetch).and_return(config)
@@ -21,7 +22,7 @@ RSpec.describe SpeedtestNet::Download do
 
   describe '.measure' do
     it 'was valid' do
-      expect(measure).to eq(4.0)
+      expect(measure).to eq(result_speed)
     end
   end
 end
