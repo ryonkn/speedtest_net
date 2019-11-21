@@ -1,8 +1,12 @@
 require: rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 2.5
   Exclude:
     - 'speedtest_net.gemspec'
+
+Layout/ClassStructure:
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
