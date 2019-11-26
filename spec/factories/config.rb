@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do # rubocop:disable Metrics/BlockLength
-  factory :config, class: SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
+  factory :config, class: 'SpeedtestNet::Config' do # rubocop:disable Metrics/BlockLength
     client do
       {
         ip: '127.0.0.1',

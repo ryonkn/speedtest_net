@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :result, class: SpeedtestNet::Result do
+  factory :result, class: 'SpeedtestNet::Result' do
     client { build(:config).client }
     server do
       server = build(:server)

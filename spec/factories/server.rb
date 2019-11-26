@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :server, class: SpeedtestNet::Server do
+  factory :server, class: 'SpeedtestNet::Server' do
     id { 0 }
     url { 'http://example.com' }
     geo { Geo.new(0.0, 0.0) }
