@@ -60,6 +60,37 @@ RSpec.describe SpeedtestNet::Server do # rubocop:disable Metrics/BlockLength
     end
   end
 
+  describe '.select_server' do
+    before do
+      latencies = 1.upto(100).map { |i| i / 10.0 }
+      allow(SpeedtestNet::Latency).to receive(:measure).and_return(latencies)
+    end
+
+    context 'when server id not set' do
+      let(:select_server) do
+        VCR.use_cassettes [{ name: 'config' }, { name: 'server' }] do
+          described_class.select_server
+        end
+      end
+
+      it 'was valid' do
+        expect(select_server.id).to eq(15_047)
+      end
+    end
+
+    context 'when server id set' do
+      let(:select_server) do
+        VCR.use_cassettes [{ name: 'config' }, { name: 'server' }] do
+          described_class.select_server(999)
+        end
+      end
+
+      it 'was valid' do
+        expect(select_server.id).to eq(999)
+      end
+    end
+  end
+
   describe '#measure_latency' do
     before do
       allow(SpeedtestNet::Latency).to receive(:measure).and_return(5.0)

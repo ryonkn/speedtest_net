@@ -48,7 +48,20 @@ module SpeedtestNet
         sorted_servers.first
       end
 
+      def select_server(id = nil)
+        id.nil? ? best_server : pick_server(id)
+      end
+
       private
+
+      def pick_server(id)
+        servers = list
+        server = servers.find { |s| s.id == id }
+        raise InvalidServerIdError if server.nil?
+
+        server.measure_latency
+        server
+      end
 
       def create_instance(server)
         config = SpeedtestNet::Config.fetch
