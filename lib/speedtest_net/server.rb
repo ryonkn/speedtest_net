@@ -38,6 +38,12 @@ module SpeedtestNet
         servers.sort_by { |s| [s.distance, s.id] }
       end
 
+      def select_server(id = nil)
+        id.nil? ? best_server : pick_server(id)
+      end
+
+      private
+
       def best_server
         servers = list
         closest_servers = servers.first(10)
@@ -47,12 +53,6 @@ module SpeedtestNet
         end
         sorted_servers.first
       end
-
-      def select_server(id = nil)
-        id.nil? ? best_server : pick_server(id)
-      end
-
-      private
 
       def pick_server(id)
         servers = list
