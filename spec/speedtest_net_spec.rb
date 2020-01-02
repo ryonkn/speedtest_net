@@ -9,7 +9,7 @@ RSpec.describe SpeedtestNet do
 
     before do
       allow(SpeedtestNet::Config).to receive(:fetch).and_return(config)
-      allow(SpeedtestNet::Server).to receive(:best_server).and_return(server)
+      allow(SpeedtestNet::Server).to receive(:select_server).and_return(server)
       allow(SpeedtestNet::Download).to receive(:measure).and_return(123_456.789)
       allow(SpeedtestNet::Upload).to receive(:measure).and_return(987_654.31)
     end
