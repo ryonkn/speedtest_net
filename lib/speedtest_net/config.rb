@@ -48,9 +48,7 @@ module SpeedtestNet
         client.follow_location = true
         client.perform
 
-        if client.response_code != 200
-          raise HTTPDownloadError, 'Config download error'
-        end
+        raise HTTPDownloadError, 'Config download error' if client.response_code != 200
 
         xml = REXML::Document.new(client.body, ignore_whitespace_nodes: :all)
         xml.elements
