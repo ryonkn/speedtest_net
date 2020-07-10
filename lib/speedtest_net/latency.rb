@@ -35,6 +35,7 @@ module SpeedtestNet
       end
 
       def measure_latency(url, timeout)
+        Typhoeus::Config.user_agent = SpeedtestNet::USER_AGENT
         client = Typhoeus::Request.new(url, followlocation: true,
                                             timeout: timeout)
         client.run

@@ -29,15 +29,18 @@ module SpeedtestNet
         end
       end
 
-      def multi_uploader(urls, size)
+      def multi_uploader(urls, size) # rubocop:disable Metrics/MethodLength
         responses = []
         content = 'A' * size
-        url_fields = urls.map do |url|
-          { url: url, post_fields: { 'content1' => content } }
+        multi = Curl::Multi.new
+        urls.each do |url|
+          client = Curl::Easy.new(url)
+          client.headers['User-Agent'] = SpeedtestNet::USER_AGENT
+          client.http_post(Curl::PostField.content('content1', content))
+          client.on_complete { |data| responses << data }
+          multi.add(client)
         end
-        Curl::Multi.post(url_fields) do |curl|
-          responses << curl
-        end
+        multi.perform
         responses.map(&:upload_speed).sum * 8
       end
     end
