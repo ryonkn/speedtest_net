@@ -16,6 +16,7 @@ RSpec.describe SpeedtestNet::Download do
     allow(Curl::Easy).to receive(:new).and_return(easy_mock)
     allow(multi_mock).to receive(:add)
     allow(multi_mock).to receive(:perform)
+    allow(easy_mock).to receive(:headers).and_return({})
     allow(easy_mock).to receive(:on_complete).and_yield(easy_mock)
     allow(easy_mock).to receive(:download_speed).and_return(*fake_speed)
   end

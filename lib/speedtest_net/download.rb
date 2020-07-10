@@ -37,6 +37,7 @@ module SpeedtestNet
         multi = Curl::Multi.new
         urls.each do |url|
           client = Curl::Easy.new(url)
+          client.headers['User-Agent'] = SpeedtestNet::USER_AGENT
           client.on_complete { |data| responses << data }
           multi.add(client)
         end

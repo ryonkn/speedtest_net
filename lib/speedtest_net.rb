@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'speedtest_net/version'
+require 'speedtest_net/user_agent'
 require 'speedtest_net/server'
 require 'speedtest_net/download'
 require 'speedtest_net/upload'
