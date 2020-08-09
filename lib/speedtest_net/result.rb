@@ -16,7 +16,7 @@ module SpeedtestNet
     end
 
     def download
-      SpeedtestNet::CalculateSpeed.call(@download_results)
+      CalculateSpeed.call(@download_results)
     end
 
     def pretty_download
@@ -24,7 +24,7 @@ module SpeedtestNet
     end
 
     def upload
-      SpeedtestNet::CalculateSpeed.call(@upload_results)
+      CalculateSpeed.call(@upload_results)
     end
 
     def pretty_upload

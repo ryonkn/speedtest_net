@@ -11,7 +11,7 @@ module SpeedtestNet
 
     class << self
       def measure(server)
-        config = SpeedtestNet::Config.fetch
+        config = Config.fetch
         test_length = test_length(config)
         timeout = config.latency[:timeout]
 
