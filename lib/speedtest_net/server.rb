@@ -26,7 +26,7 @@ module SpeedtestNet
     end
 
     def measure_latency
-      @latency = SpeedtestNet::Latency.measure(self)
+      @latency = Latency.measure(self)
     end
 
     class << self
@@ -64,7 +64,7 @@ module SpeedtestNet
       end
 
       def create_instance(server)
-        config = SpeedtestNet::Config.fetch
+        config = Config.fetch
         url = server['url2'] || server['url']
 
         geo = Geo.new(server['lat'].to_f, server['lon'].to_f)

@@ -10,7 +10,7 @@ module SpeedtestNet
 
     class << self
       def measure(server)
-        config = SpeedtestNet::Config.fetch
+        config = Config.fetch
         concurrent_number = config.upload[:threadsperurl]
 
         results = SIZE.map do |size|
@@ -35,7 +35,7 @@ module SpeedtestNet
         multi = Curl::Multi.new
         urls.each do |url|
           client = Curl::Easy.new(url)
-          client.headers['User-Agent'] = SpeedtestNet::USER_AGENT
+          client.headers['User-Agent'] = USER_AGENT
           client.http_post(Curl::PostField.content('content1', content))
           client.on_complete { |data| responses << data }
           multi.add(client)
