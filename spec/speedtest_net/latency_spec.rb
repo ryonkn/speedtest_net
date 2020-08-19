@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe SpeedtestNet::Latency do # rubocop:disable Metrics/BlockLength
   subject(:measure) { described_class.measure(server) }
 
@@ -40,3 +41,4 @@ RSpec.describe SpeedtestNet::Latency do # rubocop:disable Metrics/BlockLength
     end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers

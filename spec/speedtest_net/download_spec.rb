@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/MultipleMemoizedHelpers
 RSpec.describe SpeedtestNet::Download do
   subject(:measure) { described_class.measure(server) }
 
@@ -27,3 +28,4 @@ RSpec.describe SpeedtestNet::Download do
     end
   end
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers
