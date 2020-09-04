@@ -8,9 +8,9 @@ require 'speedtest_net/upload'
 require 'speedtest_net/result'
 
 module SpeedtestNet
-  def self.run(id = nil)
+  def self.run(id = nil, exclude_server_ids: [])
     config = Config.fetch
-    server = Server.select_server(id)
+    server = Server.select_server(id, exclude_server_ids)
     download_results = Download.measure(server)
     upload_results = Upload.measure(server)
 

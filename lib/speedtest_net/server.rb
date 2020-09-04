@@ -38,15 +38,16 @@ module SpeedtestNet
         servers.sort_by { |s| [s.distance, s.id] }
       end
 
-      def select_server(id = nil)
-        id.nil? ? best_server : pick_server(id)
+      def select_server(id = nil, exclude_server_ids = [])
+        id.nil? ? best_server(exclude_server_ids) : pick_server(id)
       end
 
       private
 
-      def best_server
+      def best_server(exclude_server_ids)
         servers = list
-        closest_servers = servers.first(10)
+        excluded_servers = servers.reject { |server| exclude_server_ids.include?(server.id) }
+        closest_servers = excluded_servers.first(10)
         closest_servers.each(&:measure_latency)
         sorted_servers = closest_servers.sort_by do |s|
           [s.latency, s.distance, s.id]
