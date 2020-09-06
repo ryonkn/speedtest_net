@@ -3,12 +3,21 @@
 require 'curb'
 require 'securerandom'
 require 'pathname'
+require 'speedtest_net/calculate_speed'
 
 module SpeedtestNet
   class Download
     FILES = %w[random350x350.jpg random500x500.jpg random1000x1000.jpg
                random1500x1500.jpg random2000x2000.jpg random3000x3000.jpg
                random3500x3500.jpg random4000x4000.jpg].freeze
+
+    def initialize(results)
+      @results = results
+    end
+
+    def calculate
+      CalculateSpeed.call(@results)
+    end
 
     class << self
       def measure(server)

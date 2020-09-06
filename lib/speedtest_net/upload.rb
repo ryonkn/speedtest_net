@@ -2,11 +2,20 @@
 
 require 'curb'
 require 'securerandom'
+require 'speedtest_net/calculate_speed'
 
 module SpeedtestNet
   class Upload
     SIZE = [250_000, 500_000, 1_000_000, 2_000_000, 4_000_000, 8_000_000,
             12_000_000, 17_000_000, 24_000_000, 32_000_000].freeze
+
+    def initialize(results)
+      @results = results
+    end
+
+    def calculate
+      CalculateSpeed.call(@results)
+    end
 
     class << self
       def measure(server)
