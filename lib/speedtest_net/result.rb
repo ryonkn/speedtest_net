@@ -6,17 +6,17 @@ module SpeedtestNet
   class Result
     UNITS = %w[bps Kbps Mbps Gbps Tbps].freeze
 
-    attr_reader :client, :server, :download_results, :upload_results
+    attr_reader :client, :server
 
-    def initialize(client, server, download_results, upload_results)
+    def initialize(client, server, download, upload)
       @client = client
       @server = server
-      @download_results = download_results
-      @upload_results = upload_results
+      @download = download
+      @upload = upload
     end
 
     def download
-      CalculateSpeed.call(@download_results)
+      @download.calculate
     end
 
     def pretty_download
@@ -24,7 +24,7 @@ module SpeedtestNet
     end
 
     def upload
-      CalculateSpeed.call(@upload_results)
+      @upload.calculate
     end
 
     def pretty_upload

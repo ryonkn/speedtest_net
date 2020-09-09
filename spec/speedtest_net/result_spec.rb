@@ -2,8 +2,6 @@
 
 RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
   let(:result) { build(:result) }
-  let(:download_results) { 1.upto(8).map { |i| i * 1.0 } }
-  let(:upload_results) { 1.upto(8).map { |i| i * 1_000_000_000_000.0 } }
 
   describe '#client' do
     it 'was valid' do
@@ -17,12 +15,6 @@ RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
     end
   end
 
-  describe '#download_results' do
-    it 'was valid' do
-      expect(result.download_results).to match(download_results)
-    end
-  end
-
   describe '#download' do
     it 'was valid' do
       expect(result.download).to eq(5.0)
@@ -32,12 +24,6 @@ RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
   describe '#pretty_download' do
     it 'was valid' do
       expect(result.pretty_download).to eq('5.00 bps')
-    end
-  end
-
-  describe '#upload_results' do
-    it 'was valid' do
-      expect(result.upload_results).to match(upload_results)
     end
   end
 

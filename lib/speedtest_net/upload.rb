@@ -26,7 +26,7 @@ module SpeedtestNet
           urls = create_urls(server, concurrent_number)
           multi_uploader(urls, size)
         end
-        results
+        new(results)
       end
 
       private

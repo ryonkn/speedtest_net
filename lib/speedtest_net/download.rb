@@ -28,7 +28,7 @@ module SpeedtestNet
           urls = create_urls(server, file, concurrent_number)
           multi_downloader(urls)
         end
-        results
+        new(results)
       end
 
       private
