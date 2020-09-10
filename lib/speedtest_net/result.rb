@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'speedtest_net/formatter/distance'
+require 'speedtest_net/formatter/latency'
+require 'speedtest_net/formatter/speed'
+
 module SpeedtestNet
   class Result
     UNITS = %w[bps Kbps Mbps Gbps Tbps].freeze
@@ -18,7 +22,7 @@ module SpeedtestNet
     end
 
     def pretty_download
-      pretty_format(download)
+      Formatter::Speed.call(download)
     end
 
     def upload
@@ -26,7 +30,7 @@ module SpeedtestNet
     end
 
     def pretty_upload
-      pretty_format(upload)
+      Formatter::Speed.call(upload)
     end
 
     def latency
@@ -34,7 +38,7 @@ module SpeedtestNet
     end
 
     def pretty_latency
-      format('%<latency>f millisecond', latency: latency * 1_000)
+      Formatter::Latency.call(latency)
     end
 
     def distance
@@ -42,7 +46,7 @@ module SpeedtestNet
     end
 
     def pretty_distance
-      format('%<distance>.3f kilometre', distance: (distance / 1_000).round(3))
+      Formatter::Distance.call(distance)
     end
 
     private
