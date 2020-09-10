@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'speedtest_net/calculate_speed'
-
 module SpeedtestNet
   class Result
     UNITS = %w[bps Kbps Mbps Gbps Tbps].freeze
