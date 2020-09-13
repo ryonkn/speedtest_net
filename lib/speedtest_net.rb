@@ -8,11 +8,11 @@ require 'speedtest_net/upload'
 require 'speedtest_net/result'
 
 module SpeedtestNet
-  def self.run(id = nil, exclude_server_ids: [])
+  def self.run(id = nil, exclude_server_ids: [], timeout: 120)
     config = Config.fetch
     server = Server.select_server(id, exclude_server_ids)
-    download_results = Download.measure(server)
-    upload_results = Upload.measure(server)
+    download_results = Download.measure(server, timeout: timeout)
+    upload_results = Upload.measure(server, timeout: timeout)
 
     Config.clear_cache
     Result.new(config.client, server, download_results, upload_results)
