@@ -6,9 +6,10 @@ require 'speedtest_net/server'
 require 'speedtest_net/download'
 require 'speedtest_net/upload'
 require 'speedtest_net/result'
+require 'speedtest_net/http_timeout'
 
 module SpeedtestNet
-  def self.run(id = nil, exclude_server_ids: [], timeout: 120)
+  def self.run(id = nil, exclude_server_ids: [], timeout: HTTP_TIMEOUT)
     config = Config.fetch
     server = Server.select_server(id, exclude_server_ids)
     download_results = Download.measure(server, timeout: timeout)
