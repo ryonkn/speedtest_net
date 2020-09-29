@@ -4,6 +4,7 @@ require 'curb'
 require 'securerandom'
 require 'pathname'
 require 'speedtest_net/calculate_speed'
+require 'speedtest_net/http_timeout'
 
 module SpeedtestNet
   class Download
@@ -20,13 +21,19 @@ module SpeedtestNet
     end
 
     class << self
-      def measure(server)
+      def measure(server, timeout: HTTP_TIMEOUT) # rubocop:disable Metrics/MethodLength
         config = Config.fetch
         concurrent_number = config.download[:threadsperurl]
 
-        results = FILES.map do |file|
-          urls = create_urls(server, file, concurrent_number)
-          multi_downloader(urls)
+        results = []
+        begin
+          Timeout.timeout(timeout) do
+            FILES.each do |file|
+              urls = create_urls(server, file, concurrent_number)
+              results << multi_downloader(urls)
+            end
+          end
+        rescue Timeout::Error # rubocop:disable Lint/SuppressedException
         end
         new(results)
       end

@@ -3,6 +3,7 @@
 require 'curb'
 require 'securerandom'
 require 'speedtest_net/calculate_speed'
+require 'speedtest_net/http_timeout'
 
 module SpeedtestNet
   class Upload
@@ -18,13 +19,19 @@ module SpeedtestNet
     end
 
     class << self
-      def measure(server)
+      def measure(server, timeout: HTTP_TIMEOUT) # rubocop:disable Metrics/MethodLength
         config = Config.fetch
         concurrent_number = config.upload[:threadsperurl]
 
-        results = SIZE.map do |size|
-          urls = create_urls(server, concurrent_number)
-          multi_uploader(urls, size)
+        results = []
+        begin
+          Timeout.timeout(timeout) do
+            SIZE.each do |size|
+              urls = create_urls(server, concurrent_number)
+              results << multi_uploader(urls, size)
+            end
+          end
+        rescue Timeout::Error # rubocop:disable Lint/SuppressedException
         end
         new(results)
       end
