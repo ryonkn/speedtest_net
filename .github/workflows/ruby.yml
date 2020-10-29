@@ -23,9 +23,16 @@ jobs:
       uses: ruby/setup-ruby@master
       with:
         ruby-version: 2.7
+    - name: Run apt-get
+      run: |
+        sudo apt-get update
+        sudo apt-get install libcurl4-openssl-dev
+    - name: Bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
     - name: Run rubocop
       run: |
-        gem install rubocop rubocop-rspec
         rubocop
 
   rspec:
