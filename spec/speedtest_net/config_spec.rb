@@ -47,7 +47,7 @@ RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
 
     context 'when access :geo' do
       it 'was Geo instance' do
-        expect(config.client[:geo]).to be_kind_of(Geo)
+        expect(config.client[:geo]).to be_kind_of(SpeedtestNet::Geo)
       end
     end
   end
