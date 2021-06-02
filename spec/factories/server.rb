@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :server, class: 'SpeedtestNet::Server' do
     id { 0 }
     url { 'http://example.com' }
-    geo { Geo.new(0.0, 0.0) }
+    geo { SpeedtestNet::Geo.new(0.0, 0.0) }
     distance { 1_234.56789 }
     server do
       { 'name' => 'example server', 'country' => 'JP', 'cc' => 'JP',

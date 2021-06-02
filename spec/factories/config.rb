@@ -6,7 +6,7 @@ FactoryBot.define do # rubocop:disable Metrics/BlockLength
       {
         ip: '127.0.0.1',
         isp: 'example isp',
-        geo: Geo.new(0.0, 0.0)
+        geo: SpeedtestNet::Geo.new(0.0, 0.0)
       }
     end
 

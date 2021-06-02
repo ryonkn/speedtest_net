@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Geo do
+RSpec.describe SpeedtestNet::Geo do
   let(:point1) { described_class.new(51.48, 0.01) }
   let(:point2) { described_class.new(35.71, 139.81) }
 

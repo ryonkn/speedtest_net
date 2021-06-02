@@ -2,7 +2,7 @@
 
 require 'rexml/document'
 require 'speedtest_net/error'
-require 'geo'
+require 'speedtest_net/geo'
 
 module SpeedtestNet
   class Config

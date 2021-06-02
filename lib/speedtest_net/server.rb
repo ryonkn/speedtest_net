@@ -4,7 +4,7 @@ require 'rexml/document'
 require 'speedtest_net/config'
 require 'speedtest_net/latency'
 require 'speedtest_net/error'
-require 'geo'
+require 'speedtest_net/geo'
 
 module SpeedtestNet
   class Server
