@@ -5,7 +5,7 @@ RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
 
   describe '#client' do
     it 'was valid' do
-      expect(result.client).to include(ip: '127.0.0.1', isp: 'example isp')
+      expect(result.client.isp).to eq('example isp')
     end
   end
 
