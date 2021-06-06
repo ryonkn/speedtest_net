@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Setup Ruby 2.7
+    - name: Setup Ruby
       uses: ruby/setup-ruby@master
       with:
-        ruby-version: 2.7
+        ruby-version: 3.0
     - name: Run apt-get
       run: |
         sudo apt-get update
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [ 2.5, 2.6, 2.7, 3.0, 'head' ]
+        ruby: [ 2.6, 2.7, 3.0, 'head' ]
     steps:
     - uses: actions/checkout@master
     - name: Setup Ruby 
