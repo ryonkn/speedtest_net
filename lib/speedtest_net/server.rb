@@ -69,7 +69,7 @@ module SpeedtestNet
         url = server['url2'] || server['url']
 
         geo = Geo.new(server['lat'].to_f, server['lon'].to_f)
-        distance = geo.distance(config.client[:geo])
+        distance = geo.distance(config.client.geo)
 
         new(server['id'].to_i, url, geo, distance, server)
       end

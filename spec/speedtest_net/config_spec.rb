@@ -42,12 +42,12 @@ RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
 
   describe '#client' do
     it 'was valid' do
-      expect(config.client).to include(ip: '127.0.0.1', isp: 'example isp')
+      expect(config.client.isp).to eq('example isp')
     end
 
-    context 'when access :geo' do
+    context 'when access geo' do
       it 'was Geo instance' do
-        expect(config.client[:geo]).to be_kind_of(SpeedtestNet::Geo)
+        expect(config.client.geo).to be_kind_of(SpeedtestNet::Geo)
       end
     end
   end

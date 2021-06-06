@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rexml/document'
+require 'speedtest_net/client'
 require 'speedtest_net/error'
 require 'speedtest_net/geo'
 
@@ -55,11 +56,7 @@ module SpeedtestNet
       end
 
       def client_config(elements)
-        {
-          ip: elements['ip'],
-          isp: elements['isp'],
-          geo: Geo.new(elements['lat'].to_f, elements['lon'].to_f)
-        }
+        Client.new(elements['ip'], elements['isp'], Geo.new(elements['lat'].to_f, elements['lon'].to_f))
       end
 
       def server_config(elements)
