@@ -42,7 +42,7 @@ module SpeedtestNet
 
       def create_urls(server, file, number)
         base_url = Pathname(server.url).dirname.to_s
-        number.times.map do
+        Array.new(number) do
           random = SecureRandom.urlsafe_base64
           "#{base_url}/#{file}?x=#{random}"
         end
@@ -58,7 +58,7 @@ module SpeedtestNet
           multi.add(client)
         end
         multi.perform
-        responses.map(&:download_speed).sum * 8
+        responses.sum(&:download_speed) * 8
       end
     end
   end

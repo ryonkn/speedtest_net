@@ -15,7 +15,7 @@ module SpeedtestNet
         test_length = test_length(config)
         timeout = config.latency[:timeout]
 
-        latencies = test_length.times.map do
+        latencies = Array.new(test_length) do
           latency_url = latency_url(server)
           measure_latency(latency_url, timeout)
         end

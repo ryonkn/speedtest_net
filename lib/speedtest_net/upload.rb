@@ -39,7 +39,7 @@ module SpeedtestNet
       private
 
       def create_urls(server, number)
-        number.times.map do
+        Array.new(number) do
           random = SecureRandom.urlsafe_base64
           "#{server.url}?x=#{random}"
         end
@@ -57,7 +57,7 @@ module SpeedtestNet
           multi.add(client)
         end
         multi.perform
-        responses.map(&:upload_speed).sum * 8
+        responses.sum(&:upload_speed) * 8
       end
     end
   end
