@@ -1,5 +1,6 @@
 # SpeedtestNet
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/355adb1d4d634b189694c8c15bda0e17)](https://app.codacy.com/gh/ryonkn/speedtest_net?utm_source=github.com&utm_medium=referral&utm_content=ryonkn/speedtest_net&utm_campaign=Badge_Grade_Settings)
 [![Gem Version](https://badge.fury.io/rb/speedtest_net.svg)](https://badge.fury.io/rb/speedtest_net)
 [![Actions Status](https://github.com/ryonkn/speedtest_net/workflows/GitHub%20Actions/badge.svg)](https://github.com/ryonkn/speedtest_net/actions)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/fa55809b2789403489d9d5063249c238)](https://www.codacy.com/manual/ryonkn/speedtest_net/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ryonkn/speedtest_net&amp;utm_campaign=Badge_Grade)
