@@ -11,9 +11,8 @@ module SpeedtestNet
     end
 
     def distance(other) # rubocop:disable Metrics/AbcSize
-      a = Math.sin(radian_lat) * Math.sin(other.radian_lat) +
-          Math.cos(radian_lat) * Math.cos(other.radian_lat) *
-          Math.cos(radian_long - other.radian_long)
+      a = (Math.sin(radian_lat) * Math.sin(other.radian_lat)) +
+          (Math.cos(radian_lat) * Math.cos(other.radian_lat) * Math.cos(radian_long - other.radian_long))
 
       Math.acos(a) * EARTH_RADIUS
     end
