@@ -2,6 +2,7 @@
 
 require 'curb'
 require 'securerandom'
+require 'timeout'
 require 'pathname'
 require 'speedtest_net/calculate_speed'
 require 'speedtest_net/http_timeout'
