@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'speedtest_net'
   spec.version       = SpeedtestNet::VERSION
   spec.authors       = ['Ryo Nakano']
-  spec.email         = ['ryo@ryonkn.com']
+  spec.email         = ['ryo.z.nakano@gmail.com']
 
   spec.summary       = 'Library for testing internet bandwidth using speedtest.net'
   spec.description   = 'Library for testing internet bandwidth using speedtest.net'
