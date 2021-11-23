@@ -48,12 +48,12 @@ module SpeedtestNet
 
       def multi_uploader(urls, size) # rubocop:disable Metrics/MethodLength
         responses = []
-        content = 'A' * size
+        post_field = "content1=#{'A' * size}"
         multi = Curl::Multi.new
         urls.each do |url|
           client = Curl::Easy.new(url)
           client.headers['User-Agent'] = USER_AGENT
-          client.http_post(Curl::PostField.content('content1', content))
+          client.http_post(post_field)
           client.on_complete { |data| responses << data }
           multi.add(client)
         end
