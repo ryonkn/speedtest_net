@@ -1,0 +1,13 @@
+module SpeedtestNet
+  class Geo
+    RADIAN_PER_DEGREE: Float
+    EARTH_RADIUS: Integer
+    @lat: Float
+    @long: Float
+
+    def initialize: (Float lat, Float long) -> void
+    def distance: (Geo other) -> Float
+    def radian_lat: -> Float
+    def radian_long: -> Float
+  end
+end
