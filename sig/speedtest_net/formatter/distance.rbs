@@ -1,0 +1,7 @@
+module SpeedtestNet
+  module Formatter
+    class Distance
+      def self.call: (Float distance) -> String
+    end
+  end
+end

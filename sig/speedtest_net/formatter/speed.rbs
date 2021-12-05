@@ -1,0 +1,9 @@
+module SpeedtestNet
+  module Formatter
+    class Speed
+      UNITS: Array[String]
+
+      def self.call: (Float speed) -> String
+    end
+  end
+end

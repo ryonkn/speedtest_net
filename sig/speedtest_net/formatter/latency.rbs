@@ -1,0 +1,7 @@
+module SpeedtestNet
+  module Formatter
+    class Latency
+      def self.call: (Float latency) -> String
+    end
+  end
+end
