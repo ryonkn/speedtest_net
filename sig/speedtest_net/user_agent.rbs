@@ -1,0 +1,3 @@
+module SpeedtestNet
+  USER_AGENT: String
+end
