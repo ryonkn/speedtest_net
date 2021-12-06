@@ -1,0 +1,3 @@
+module SpeedtestNet
+  HTTP_TIMEOUT: Integer
+end
