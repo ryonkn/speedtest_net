@@ -13,7 +13,7 @@ module SpeedtestNet
 
         faster = count - (count * 0.1).round # fastest 10%
         slower = (count * 0.3).round # slowest 30%
-        target_results = sorted_results[slower...faster]
+        target_results = sorted_results[slower...faster].to_a
 
         # The remaining result are averaged together to determine
         # the final result
