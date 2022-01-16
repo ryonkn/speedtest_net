@@ -1,0 +1,6 @@
+module SpeedtestNet
+  class CalculateSpeed
+    def self.call: (Array[Float]) -> Float
+    def self.sorted_nemric_results: (Array[Float]) -> Array[Float]
+  end
+end
