@@ -1,0 +1,8 @@
+module SpeedtestNet
+  class Client
+    attr_reader ip: String
+    attr_reader isp: String
+    attr_reader geo: Geo
+    def initialize: (String ip, String isp, Geo geo) -> void
+  end
+end
