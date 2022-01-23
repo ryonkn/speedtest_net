@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'curb', '~> 0.9'
+  spec.add_dependency 'curb', '>= 0.9', '< 2.0'
   spec.add_dependency 'rexml', '~> 3.2'
   spec.add_dependency 'typhoeus', '~> 1.3'
 end
