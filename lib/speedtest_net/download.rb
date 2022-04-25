@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'curb'
 require 'securerandom'
 require 'timeout'
+require 'typhoeus'
 require 'pathname'
 require 'speedtest_net/http_timeout'
 require 'speedtest_net/measure_result'
@@ -43,15 +43,15 @@ module SpeedtestNet
 
       def multi_downloader(urls)
         responses = []
-        multi = Curl::Multi.new
+        Typhoeus::Config.user_agent = USER_AGENT
+        hydra = Typhoeus::Hydra.new
         urls.each do |url|
-          client = Curl::Easy.new(url)
-          client.headers['User-Agent'] = USER_AGENT
-          client.on_complete { |data| responses << data }
-          multi.add(client)
+          request = Typhoeus::Request.new(url)
+          request.on_complete { |response| responses << response }
+          hydra.queue(request)
         end
-        multi.perform
-        responses.sum(&:download_speed) * 8
+        hydra.run
+        responses.sum(&:speed_download) * 8
       end
     end
   end
