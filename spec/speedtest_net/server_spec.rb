@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe SpeedtestNet::Server do # rubocop:disable Metrics/BlockLength
-  describe '.list' do # rubocop:disable Metrics/BlockLength
+RSpec.describe SpeedtestNet::Server do
+  describe '.list' do
     let(:servers) do
       VCR.use_cassettes [{ name: 'config' }, { name: 'server' }] do
         described_class.list
