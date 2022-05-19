@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SpeedtestNet::Config do # rubocop:disable Metrics/BlockLength
+RSpec.describe SpeedtestNet::Config do
   before { described_class.instance_variable_set :@instance_cache, nil }
 
   let(:config) { build(:config) }

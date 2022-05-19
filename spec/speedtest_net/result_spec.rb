@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SpeedtestNet::Result do # rubocop:disable Metrics/BlockLength
+RSpec.describe SpeedtestNet::Result do
   let(:result) { build(:result) }
 
   describe '#client' do

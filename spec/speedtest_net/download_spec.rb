@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SpeedtestNet::Download do # rubocop:disable Metrics/BlockLength
+RSpec.describe SpeedtestNet::Download do
   describe '.measure' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:config) { build(:config) }
     let(:server) { build(:server) }
