@@ -8,9 +8,9 @@ FactoryBot.define do
       server.instance_variable_set(:@latency, 0.12345)
       server
     end
-    download { build(:download) }
-    upload { build(:upload) }
+    download_result { build(:download_result) }
+    upload_result { build(:upload_result) }
 
-    initialize_with { new(client, server, download, upload) }
+    initialize_with { new(client, server, download_result, upload_result) }
   end
 end
