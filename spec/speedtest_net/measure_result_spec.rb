@@ -5,6 +5,12 @@ RSpec.describe SpeedtestNet::MeasureResult do
   let(:floats) { [1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.10, 11.11] }
   let(:various) { [nil, 'string', :symbol, 1, 2.0, 3 / 1r, 4, 5.0] }
 
+  describe '#new' do
+    it 'argument is various types was valid' do
+      expect(described_class.new(various).instance_variable_get(:@results)).to eq([1, 2.0, 4, 5.0])
+    end
+  end
+
   describe '#calculate' do
     it 'argument is all integers was valid' do
       expect(described_class.new(integers).calculate).to eq(6.5)
@@ -15,7 +21,7 @@ RSpec.describe SpeedtestNet::MeasureResult do
     end
 
     it 'argument is various types was valid' do
-      expect(described_class.new(various).calculate).to eq(3.5)
+      expect(described_class.new(various).calculate).to eq(3.6666666666666665)
     end
   end
 end

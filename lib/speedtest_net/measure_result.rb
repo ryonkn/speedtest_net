@@ -2,18 +2,17 @@
 
 module SpeedtestNet
   class MeasureResult
-    def initialize(results)
-      @results = results
+    def initialize(results = [])
+      @results = results.select { |result| result.instance_of?(Integer) || result.instance_of?(Float) }
     end
 
     def calculate
+      return 0.0 if @results.size.zero?
+
       # Fastest 10% and slowest 30% of results are then discarded
       # See: https://support.ookla.com/hc/en-us/articles/234575828-What-is-the-test-flow-and-methodology-for-the-Speedtest-
-      numeric_results = @results.select { |result| result.is_a? Numeric }
-      sorted_results = numeric_results.sort
-      count = sorted_results.count
-
-      return 0.0 if count.zero?
+      sorted_results = @results.sort
+      count = sorted_results.size
 
       faster = count - (count * 0.1).round # fastest 10%
       slower = (count * 0.3).round # slowest 30%
