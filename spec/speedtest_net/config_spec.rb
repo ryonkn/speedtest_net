@@ -47,7 +47,7 @@ RSpec.describe SpeedtestNet::Config do
 
     context 'when access geo' do
       it 'was Geo instance' do
-        expect(config.client.geo).to be_kind_of(SpeedtestNet::Geo)
+        expect(config.client.geo).to be_a(SpeedtestNet::Geo)
       end
     end
   end
