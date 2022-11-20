@@ -21,15 +21,7 @@ RSpec.describe SpeedtestNet::Download do
     end
 
     it 'was valid' do
-      expect(described_class.measure(server)).to be_instance_of(described_class)
-    end
-  end
-
-  describe '#calculate' do
-    let(:download) { build(:download) }
-
-    it 'was valid' do
-      expect(download.calculate).to eq(5.0)
+      expect(described_class.measure(server)).to be_instance_of(SpeedtestNet::MeasureResult)
     end
   end
 end

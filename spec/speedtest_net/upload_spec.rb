@@ -24,15 +24,7 @@ RSpec.describe SpeedtestNet::Upload do
     end
 
     it 'was valid' do
-      expect(described_class.measure(server)).to be_instance_of(described_class)
-    end
-  end
-
-  describe '#calculate' do
-    let(:upload) { build(:upload) }
-
-    it 'was valid' do
-      expect(upload.calculate).to eq(5_000_000_000_000.0)
+      expect(described_class.measure(server)).to be_instance_of(SpeedtestNet::MeasureResult)
     end
   end
 end

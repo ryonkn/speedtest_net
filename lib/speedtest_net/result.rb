@@ -8,15 +8,15 @@ module SpeedtestNet
   class Result
     attr_reader :client, :server
 
-    def initialize(client, server, download, upload)
+    def initialize(client, server, download_result, upload_result)
       @client = client
       @server = server
-      @download = download
-      @upload = upload
+      @download_result = download_result
+      @upload_result = upload_result
     end
 
     def download
-      @download.calculate
+      @download_result.calculate
     end
 
     def pretty_download
@@ -24,7 +24,7 @@ module SpeedtestNet
     end
 
     def upload
-      @upload.calculate
+      @upload_result.calculate
     end
 
     def pretty_upload
