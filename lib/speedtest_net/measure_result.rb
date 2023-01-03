@@ -7,7 +7,7 @@ module SpeedtestNet
     end
 
     def calculate
-      return 0.0 if @results.size.zero?
+      return 0.0 if @results.empty?
 
       # Fastest 10% and slowest 30% of results are then discarded
       # See: https://support.ookla.com/hc/en-us/articles/234575828-What-is-the-test-flow-and-methodology-for-the-Speedtest-
