@@ -2,8 +2,6 @@
 
 FactoryBot.define do
   factory :config, class: 'SpeedtestNet::Config' do
-    client { build(:client) }
-
     server do
       {
         threadcount: 1,
@@ -44,7 +42,7 @@ FactoryBot.define do
     end
 
     initialize_with do
-      SpeedtestNet::Config.send(:new, client, server, download, upload, latency)
+      SpeedtestNet::Config.send(:new, build(:client), server, download, upload, latency)
     end
   end
 end
