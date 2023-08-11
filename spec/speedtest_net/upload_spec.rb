@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe SpeedtestNet::Upload do
-  describe '.measure' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe '.measure' do
     let(:config) { build(:config) }
     let(:server) { build(:server) }
     let(:multi_mock) { instance_double(Curl::Multi) }
@@ -15,8 +15,7 @@ RSpec.describe SpeedtestNet::Upload do
       allow(Curl::PostField).to receive(:content).and_return(post_mock)
       allow(multi_mock).to receive(:add)
       allow(multi_mock).to receive(:perform)
-      allow(easy_mock).to receive(:headers).and_return({})
-      allow(easy_mock).to receive(:http_post).and_return(post_mock)
+      allow(easy_mock).to receive_messages(headers: {}, http_post: post_mock)
       allow(easy_mock).to receive(:on_complete).and_yield(easy_mock)
       allow(easy_mock).to receive(:upload_speed).and_return(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
     end
