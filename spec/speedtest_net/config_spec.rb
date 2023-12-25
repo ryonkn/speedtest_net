@@ -14,11 +14,12 @@ RSpec.describe SpeedtestNet::Config do
 
     context 'when access error was' do
       before do
-        curl_mock = instance_double(Curl::Easy)
-        allow(Curl::Easy).to receive(:new).and_return(curl_mock)
-        allow(curl_mock).to receive_messages('follow_location=': true,
-                                             perform: true,
-                                             response_code: 500)
+        request_mock = instance_double(Typhoeus::Request)
+        response_mock = instance_double(Typhoeus::Response)
+
+        allow(Typhoeus::Request).to receive(:new).and_return(request_mock)
+        allow(request_mock).to receive_messages(run: true, response: response_mock)
+        allow(response_mock).to receive_messages(code: 500)
       end
 
       it 'raise error' do
