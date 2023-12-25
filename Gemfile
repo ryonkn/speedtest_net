@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'typhoeus', github: 'typhoeus/typhoeus'
-
 # Specify your gem's dependencies in speedtest_net.gemspec
 gemspec
 
