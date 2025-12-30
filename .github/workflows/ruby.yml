@@ -57,6 +57,7 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Run rspec
       run: bundle exec rspec
+    - name: Run Codacy Coverage Reporter
       env:
-        CI: true
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l ruby -r coverage/coverage.xml

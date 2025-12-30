@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'codacy-coverage'
+require 'simplecov-cobertura'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
     SimpleCov::Formatter::HTMLFormatter,
-    Codacy::Formatter
+    SimpleCov::Formatter::CoberturaFormatter
   ]
 )
 
