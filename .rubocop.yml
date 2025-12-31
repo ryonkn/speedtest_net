@@ -1,11 +1,11 @@
-require:
+plugins:
   - rubocop-factory_bot
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.2
   NewCops: enable
 
 Style/Documentation:
