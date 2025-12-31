@@ -45,13 +45,12 @@ module SpeedtestNet
       end
 
       def fetch_config
-        client = Curl::Easy.new('https://www.speedtest.net/speedtest-config.php')
-        client.follow_location = true
-        client.perform
+        client = Typhoeus::Request.new('https://www.speedtest.net/speedtest-config.php', followlocation: true)
+        client.run
 
-        raise HTTPDownloadError, 'Config download error' if client.response_code != 200
+        raise HTTPDownloadError, 'Config download error' if client.response.code != 200
 
-        xml = REXML::Document.new(client.body, ignore_whitespace_nodes: :all)
+        xml = REXML::Document.new(client.response.body, ignore_whitespace_nodes: :all)
         xml.elements
       end
 
