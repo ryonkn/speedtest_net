@@ -23,7 +23,7 @@ jobs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@master
       with:
-        ruby-version: 4.0.1
+        ruby-version: 4.0.3
     - name: Run apt-get
       run: |
         sudo apt-get update
